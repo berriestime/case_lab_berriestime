@@ -34,3 +34,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Directus
+/directus/database/*
+/directus/extensions/*
+/directus/uploads/*
+!/directus/database/.gitkeep
+!/directus/extensions/.gitkeep
+!/directus/uploads/.gitkeep

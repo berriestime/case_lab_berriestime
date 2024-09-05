@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getPhotos } from './api/api.js';
+import { getPhotosWithThumbnails } from './api/api.js';
 import styles from '@/styles/Photos.module.css';
 import { ImageModal } from './ImageModal.js';
 
@@ -12,7 +12,7 @@ const PhotosPage = () => {
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        const photoData = await getPhotos();
+        const photoData = await getPhotosWithThumbnails();
         setPhotos(photoData);
         setLoading(false);
       } catch (err) {
@@ -25,7 +25,7 @@ const PhotosPage = () => {
   }, []);
 
   const handleImageClick = (photo) => {
-    setSelectedImage(`http://localhost:8055/assets/${photo.awesome_image}`);
+    setSelectedImage(photo.fullImageUrl);
   };
 
   const handleCloseModal = () => {
@@ -41,24 +41,25 @@ const PhotosPage = () => {
   }
 
   return (
-    <div className="gallery-wrapper">
-      <h1 className={styles.center}>Gallery</h1>
-      <div className="gallery">
+    <div className={styles.galleryWrapper}>
+      <h1 className={styles.center}>GALLERY</h1>
+      <div className={styles.gallery}>
         {photos.map((photo) => (
-          <div key={photo.id} onClick={() => handleImageClick(photo)}>
-            <img
-              className="gallery-item"
-              src={`http://localhost:8055/assets/${photo.awesome_image}`}
-              alt={`Photo ${photo.id}`}
-            />
-          </div>
+          <div
+            key={photo.id}
+            className={styles.galleryItem}
+            onClick={() => handleImageClick(photo)}
+            style={{ backgroundImage: `url(${photo.thumbnailUrl})` }}
+          ></div>
         ))}
       </div>
-      <ImageModal
-        src={selectedImage}
-        alt="Full size image"
-        onClose={handleCloseModal}
-      />
+      {selectedImage && (
+        <ImageModal
+          src={selectedImage}
+          alt="Full size image"
+          onClose={handleCloseModal}
+        />
+      )}
     </div>
   );
 };

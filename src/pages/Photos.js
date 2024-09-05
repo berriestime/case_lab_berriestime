@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { getPhotos } from './api/api.js';
-import styles from '@/styles/Home.module.css';
+import styles from '@/styles/Photos.module.css';
+import { ImageModal } from './ImageModal.js';
 
 const PhotosPage = () => {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     const fetchPhotos = async () => {
@@ -22,6 +24,14 @@ const PhotosPage = () => {
     fetchPhotos();
   }, []);
 
+  const handleImageClick = (photo) => {
+    setSelectedImage(`http://localhost:8055/assets/${photo.awesome_image}`);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedImage(null);
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -32,19 +42,23 @@ const PhotosPage = () => {
 
   return (
     <div className="gallery-wrapper">
-      <h1 className={`${styles.center}`}>Gallery</h1>
+      <h1 className={styles.center}>Gallery</h1>
       <div className="gallery">
         {photos.map((photo) => (
-          <div key={photo.id}>
+          <div key={photo.id} onClick={() => handleImageClick(photo)}>
             <img
               className="gallery-item"
               src={`http://localhost:8055/assets/${photo.awesome_image}`}
               alt={`Photo ${photo.id}`}
             />
-            <p>Date Created: {photo.date_created.toISOString()}</p>
           </div>
         ))}
       </div>
+      <ImageModal
+        src={selectedImage}
+        alt="Full size image"
+        onClose={handleCloseModal}
+      />
     </div>
   );
 };

@@ -98,7 +98,7 @@ a {
 }
 
 .gallery-wrapper {
-  max-width: 1200px;
+  max-width: 1800px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -106,17 +106,17 @@ a {
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  padding: 10px;
-  max-width: 1200px;
+  grid-gap: 1rem;
+  padding: 1rem;
   margin: auto;
 }
 
-.gallery img {
+.gallery-item {
   width: 100%;
   height: auto;
   display: block;
   object-fit: cover;
+  cursor: pointer;
 }
 
 @media (max-width: 800px) {

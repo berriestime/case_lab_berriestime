@@ -63,6 +63,7 @@
   padding: 5px 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  color: var(--foreground-rgb);
 }
 
 .pageNumber:hover:not([disabled]) {
@@ -107,5 +108,16 @@
 @media (max-width: 700px) {
   .center {
     padding: 2rem 0;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .pageNumber {
+    border: 1px solid #c3bfbf;
+    background-color: #6f6363;
+  }
+
+  .pageNumber:hover:not([disabled]) {
+    background-color: #918383;
   }
 }

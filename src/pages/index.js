@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { PhotosPage } from './Photos.js';
+import PhotosPage from './Photos.js';
 import styles from '@/styles/Photos.module.css';
 
 export default function Home() {

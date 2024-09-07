@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { getPhotosWithThumbnails } from './api/api.js';
 import styles from '@/styles/Photos.module.css';
 import { ImageModal } from './ImageModal.js';
-
 const PhotosPage = () => {
   const itemsPerPage = 12;
   const [photos, setPhotos] = useState([]);
@@ -89,4 +88,4 @@ const PhotosPage = () => {
   );
 };
 
-export { PhotosPage };
+export default PhotosPage;

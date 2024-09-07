@@ -14,4 +14,4 @@ const ImageModal = ({ src, alt, onClose }) => {
   );
 };
 
-export { ImageModal };
+export default ImageModal;

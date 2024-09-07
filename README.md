@@ -13,6 +13,9 @@
 
 ![image](https://github.com/user-attachments/assets/ed3c5c16-674b-405a-8e4e-71b43de8fa45)
 
+### Stack Project
+Next.js
+
 ## Usage
 
 ```bash

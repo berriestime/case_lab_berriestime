@@ -18,8 +18,8 @@ services:
       CORS_ENABLED: 'true'
       CORS_ORIGIN: 'true'
   next:
-    build: ./
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
     ports:
       - 3000:3000
-    volumes:
-      - .:/app

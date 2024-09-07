@@ -1,1 +1,4 @@
-*
+/.git
+/.next
+/directus
+/node_modules

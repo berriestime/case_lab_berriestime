@@ -36,9 +36,11 @@ yarn-error.log*
 next-env.d.ts
 
 # Directus
-/directus/database/*
-/directus/extensions/*
-/directus/uploads/*
+# не игнорируем файлы базы данных, расширений и загруженных файлов,
+# не игнорируем файлы .gitkeep, которые нужны для инициализации пустых каталогов
+!/directus/database/*
+!/directus/extensions/*
+!/directus/uploads/*
 !/directus/database/.gitkeep
 !/directus/extensions/.gitkeep
 !/directus/uploads/.gitkeep
